@@ -1,16 +1,22 @@
+require('dotenv').config();
+
 export const config = {
   "dev": {
-    "username": "",
-    "password": "",
-    "database": "",
-    "host": "",
+    // credentials for AWS RDS
+    "host": process.env.DEV_POSTGRES_HOST,
+    "username": process.env.DEV_POSTGRES_USER,
+    "password": process.env.DEV_POSTGRES_PASSWORD,
+    "database": process.env.DEV_POSTGRES_DATABASE,
     "dialect": "postgres",
-    "aws_region": "us-east-2",
-    "aws_profile": "default",
-    "aws_media_bucket": "udagram-ruttner-dev"
+
+    // credentials for AWS S3
+      // get the Access Key ID and Secret Access Key from AWS CLI config
+    "aws_profile": process.env.DEV_AWS_PROFILE, 
+    "aws_region": process.env.DEV_AWS_REGION,
+    "aws_media_bucket": process.env.DEV_AWS_MEDIA_BUCKET
   },
   "jwt": {
-    "secret": " "
+    "secret": process.env.DEV_JWT_SECRET
   },
   "prod": {
     "username": "",
